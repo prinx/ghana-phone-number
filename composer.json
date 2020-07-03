@@ -1,0 +1,22 @@
+{
+    "name": "prinx/ghana-phone-number",
+    "description": "Perform basic operations, checking and validation on Ghana phone numbers",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Prince Dorcis",
+            "email": "princedorcis@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "config": {
+        "optimize-autoloader": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Prinx\\GhanaPhoneNumber\\": "src/"
+        }
+    }
+}
