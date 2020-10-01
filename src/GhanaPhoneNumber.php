@@ -3,63 +3,64 @@
 namespace Prinx\GhanaPhoneNumber;
 
 /**
- * Ghana phone numbers utility class
+ * Ghana phone numbers utility class.
  *
  * @author Prince Dorcis <princedorcis@gmail.com>
  */
 class GhanaPhoneNumber
 {
     /**
-     * Networks associated to their specific data
+     * Networks associated to their specific data.
      *
      * @var array
      */
     protected static $networkSpecific = [
-        "MTN" => [
-            "mnc" => "01",
-            "patterns" => [
+        'MTN' => [
+            'mnc'      => '01',
+            'patterns' => [
                 "((\+?233\(0\)|\+?233|0))?24[0-9]{7,10}",
                 "((\+?233\(0\)|\+?233|0))?54[0-9]{7,10}",
                 "((\+?233\(0\)|\+?233|0))?55[0-9]{7,10}",
                 "((\+?233\(0\)|\+?233|0))?59[0-9]{7,10}",
             ],
         ],
-        "AIRTEL-TIGO" => [
-            "mnc" => "03",
-            "patterns" => [
+        'AIRTEL-TIGO' => [
+            'mnc'      => '03',
+            'patterns' => [
                 "((\+?233\(0\)|\+?233|0))?27[0-9]{7,10}",
                 "((\+?233\(0\)|\+?233|0))?57[0-9]{7,10}",
                 "((\+?233\(0\)|\+?233|0))?26[0-9]{7,10}",
                 "((\+?233\(0\)|\+?233|0))?56[0-9]{7,10}",
             ],
         ],
-        "VODAFONE" => [
-            "mnc" => "02",
-            "patterns" => [
+        'VODAFONE' => [
+            'mnc'      => '02',
+            'patterns' => [
                 "((\+?233\(0\)|\+?233|0))?20[0-9]{7,10}",
                 "((\+?233\(0\)|\+?233|0))?50[0-9]{7,10}",
             ],
         ],
-        "GLO" => [
-            "mnc" => "07",
-            "patterns" => [
+        'GLO' => [
+            'mnc'      => '07',
+            'patterns' => [
                 "((\+?233\(0\)|\+?233|0))23[0-9]{7,10}",
             ],
         ],
-        "EXPRESSO" => [
-            "mnc" => "05",
-            "patterns" => [
+        'EXPRESSO' => [
+            'mnc'      => '05',
+            'patterns' => [
                 "((\+?233\(0\)|\+?233|0))?28[0-9]{7,10}",
             ],
         ],
     ];
 
     /**
-     * Check if a number belongs to a network
+     * Check if a number belongs to a network.
      *
      * @param string $network
      * @param string $number
-     * @return boolean
+     *
+     * @return bool
      */
     public static function isNetwork($network, $number)
     {
@@ -69,7 +70,7 @@ class GhanaPhoneNumber
 
         $patterns = self::$networkSpecific[$network]['patterns'];
         foreach ($patterns as $pattern) {
-            if (preg_match('/' . $pattern . '/', $number)) {
+            if (preg_match('/'.$pattern.'/', $number)) {
                 return true;
             }
         }
@@ -78,9 +79,10 @@ class GhanaPhoneNumber
     }
 
     /**
-     * Returns the network to which belongs the number
+     * Returns the network to which belongs the number.
      *
      * @param string $number
+     *
      * @return string
      */
     public static function getNetwork($number)
@@ -95,9 +97,10 @@ class GhanaPhoneNumber
     }
 
     /**
-     * Return the mnc of a particualr network
+     * Return the mnc of a particualr network.
      *
      * @param string $networkOrNumber
+     *
      * @return string
      */
     public static function getMnc($networkOrNumber)
@@ -109,9 +112,10 @@ class GhanaPhoneNumber
     }
 
     /**
-     * Returns the phone patterns for a specific network
+     * Returns the phone patterns for a specific network.
      *
      * @param string $network
+     *
      * @return array
      */
     public function phonePatterns($network)
